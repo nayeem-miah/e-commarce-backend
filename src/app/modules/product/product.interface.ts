@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 
 export enum IStatus {
-    DRAFT = "DRAFT",
+    BLOCKED = "BLOCKED",
     ACTIVE = "ACTIVE"
 }
 
