@@ -50,10 +50,27 @@ const updateProduct = async (req: Request, res: Response, next: NextFunction) =>
     }
 }
 
+const deleteProduct = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const id = req.params.id
+
+        const result = await Product.findByIdAndDelete(id);
+
+        res.status(201).json({
+            success: true,
+            message: "product delete success success",
+            data: result
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 
 export const ProductController = {
     addProduct,
     getProducts,
-    updateProduct
+    updateProduct,
+    deleteProduct
 }
