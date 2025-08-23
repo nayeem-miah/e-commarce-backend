@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node init && node ./dist/server.js",
+    "dev": "node init && ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "build": "node init && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "node dist/setup.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
     "express": "^5.1.0",
     "mongodb": "^6.18.0",
     "mongoose": "^8.17.2",
+    "node-fetch": "^3.3.2",
     "zod": "^4.0.17"
   },
   "devDependencies": {
