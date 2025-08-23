@@ -9,11 +9,14 @@ const addressZodSchema = z.object({
 
 export const checkoutZodSchema = z.object({
     product: z.string(),
+
     address: addressZodSchema,
+
     quantity: z
         .number({ message: "Quantity is required" })
         .int("Quantity must be an integer")
         .positive("Quantity must be > 0"),
+
     totalPrice: z
         .number({ message: "Total price is required" })
         .nonnegative("Total price cannot be negative"),
