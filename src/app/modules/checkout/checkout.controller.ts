@@ -74,9 +74,28 @@ const updateOrder = async (req: Request, res: Response, next: NextFunction) => {
     }
 }
 
+const deleteOrders = async (req: Request, res: Response, next: NextFunction) => {
+    const id = req.params.id;
+
+
+    try {
+
+        const result = await Checkout.findByIdAndDelete(id)
+
+        res.status(200).json({
+            success: true,
+            message: " product order delete success",
+            data: result
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 export const CheckoutController = {
     crateOrder,
     allOrders,
-    updateOrder
+    updateOrder,
+    deleteOrders
 }

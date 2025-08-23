@@ -16,6 +16,9 @@ router.patch("/:id",
     validationRequest(updateCheckoutZodSchema),
     CheckoutController.updateOrder
 )
+router.delete("/:id",
+    CheckoutController.deleteOrders
+)
 
 
 
