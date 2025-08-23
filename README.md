@@ -20,9 +20,6 @@ src/
 
 ````
 
-## 🌐 Live Backend
-https://e-commerce-backend-gamma-ashen.vercel.app
-
 - **modules/product**: Product related logic (controller, route, validation, model)  
 - **modules/checkout**: Checkout/order logic (controller, route, validation, model)  
 - **middlewares**: Input validation, error handling  
@@ -58,6 +55,11 @@ https://e-commerce-backend-gamma-ashen.vercel.app
 - Request validation using **Zod**
 - Centralized error shape
 - Request logging middleware
+
+---
+## 🌐 Live Backend
+https://e-commerce-backend-gamma-ashen.vercel.app
+
 
 ---
 
