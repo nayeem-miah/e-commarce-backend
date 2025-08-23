@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CheckoutRoute = void 0;
+const express_1 = require("express");
+const validationRequest_1 = require("../../middlewares/validationRequest");
+const checkout_validation_1 = require("./checkout.validation");
+const checkout_controller_1 = require("./checkout.controller");
+const router = (0, express_1.Router)();
+router.post("/", (0, validationRequest_1.validationRequest)(checkout_validation_1.checkoutZodSchema), checkout_controller_1.CheckoutController.crateOrder);
+router.get("/", checkout_controller_1.CheckoutController.allOrders);
+router.patch("/:id", (0, validationRequest_1.validationRequest)(checkout_validation_1.updateCheckoutZodSchema), checkout_controller_1.CheckoutController.updateOrder);
+router.delete("/:id", checkout_controller_1.CheckoutController.deleteOrders);
+exports.CheckoutRoute = router;

@@ -3,11 +3,12 @@ import cors from "cors"
 import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
 import { notFount } from "./app/middlewares/notFount";
 import router from "./app/routes/route";
+import dotenv from "dotenv"
 
 
 const app = express();
 app.use(express.json());
-
+dotenv.config()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(cors());

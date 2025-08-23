@@ -17,12 +17,25 @@ const addProduct = async (req: Request, res: Response, next: NextFunction) => {
 
 const getProducts = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const result = await Product.find();
+
+        const products = await Product.aggregate([
+            {
+                $addFields: {
+                    variantSummary: {
+                        lowestPrice: { $min: "$variants.price" },
+                        highestPrice: { $max: "$variants.price" },
+                        totalInventory: { $sum: "$variants.inventory" },
+                        variantCount: { $size: "$variants" }
+                    }
+                }
+            },
+        ]);
+
 
         res.status(201).json({
             success: true,
             message: "all product received success",
-            data: result
+            data: products
         })
     } catch (error) {
         next(error)

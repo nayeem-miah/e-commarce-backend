@@ -15,7 +15,7 @@ const crateOrder = async (req: Request, res: Response, next: NextFunction) => {
             updatePrice,
             { new: true, runValidators: true }
         )
-        console.log(updateResult);
+
         res.status(201).json({
             success: true,
             message: "product order success",

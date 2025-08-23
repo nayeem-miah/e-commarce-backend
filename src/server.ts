@@ -9,7 +9,7 @@ const port = 5000
 
 const startServer = async () => {
     try {
-        await mongoose.connect("mongodb://localhost:27017/e-commerce-backend")
+        await mongoose.connect(process.env.MONGO_URI as string)
         console.log("DB connect....");
 
         server = app.listen(port, () => {
