@@ -11,6 +11,9 @@ const addressSchema = new Schema<IAddress>({
         required: true
     },
     city: String
+}, {
+    _id: false,
+    versionKey: false
 })
 
 

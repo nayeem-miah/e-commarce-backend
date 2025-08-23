@@ -8,7 +8,9 @@ const router = Router();
 router.post("/",
     validationRequest(checkoutZodSchema),
     CheckoutController.crateOrder
-)
+);
+
+router.get("/", CheckoutController.allOrders);
 
 
 
