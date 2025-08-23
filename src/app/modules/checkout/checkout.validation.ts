@@ -21,4 +21,6 @@ export const checkoutZodSchema = z.object({
         .number({ message: "Total price is required" })
         .nonnegative("Total price cannot be negative"),
 
-})
+});
+
+export const updateCheckoutZodSchema = checkoutZodSchema.partial();

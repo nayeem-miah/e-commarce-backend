@@ -42,7 +42,41 @@ const allOrders = async (req: Request, res: Response, next: NextFunction) => {
 }
 
 
+const updateOrder = async (req: Request, res: Response, next: NextFunction) => {
+    const id = req.params.id;
+    const updatedData = req.body;
+
+    try {
+        const order = await Checkout.findById(id);
+
+        if (!order) {
+            throw new Error("orders not found")
+        }
+
+        const updateDoc = {
+            ...req.body,
+            totalPrice: order.totalPrice * updatedData.quantity
+        }
+
+        const result = await Checkout.findByIdAndUpdate(
+            id,
+            updateDoc,
+            { new: true, runValidators: true }
+        )
+
+        res.status(200).json({
+            success: true,
+            message: " product order update success",
+            data: result
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
+
 export const CheckoutController = {
     crateOrder,
-    allOrders
+    allOrders,
+    updateOrder
 }

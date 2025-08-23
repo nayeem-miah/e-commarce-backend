@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { validationRequest } from "../../middlewares/validationRequest";
-import { checkoutZodSchema } from "./checkout.validation";
+import { checkoutZodSchema, updateCheckoutZodSchema } from "./checkout.validation";
 import { CheckoutController } from "./checkout.controller";
 
 const router = Router();
@@ -12,6 +12,10 @@ router.post("/",
 
 router.get("/", CheckoutController.allOrders);
 
+router.patch("/:id",
+    validationRequest(updateCheckoutZodSchema),
+    CheckoutController.updateOrder
+)
 
 
 
